@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANALIZADOR</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">INGRESAR UN URL</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/modelo" method="post">
+                            <div class="form-group">
+                                <label for="url">URL:</label>
+                                <input type="text" id="url" name="url" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modelo">Selecciona un modelo (1-5):</label>
+                                <select id="modelo" name="modelo" class="form-control" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Enviar" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% if result %}
+                <div class="card mt-3 mb-3">
+                    <div class="card-header">
+                        <h3 class="text-center">RESULTADO:</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center font-weight-bold">ANALIZADO POR EL MODELO NO.{{ modelo }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">{{ result }}</p>
+                        <p class="text-center">{{ p_legitima }}</p>
+                        <p class="text-center">{{ p_phishing }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
